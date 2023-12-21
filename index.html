@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Virtual Piano</title>
+    <style>
+      .container {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+        margin: auto;
+        padding: 2rem;
+      }
+
+      .text {
+        color: red;
+        font-weight: bold;
+        font-size: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h3 class="text">MY PIANO</h3>
+      <div id="note"></div>
+    </div>
+
+    <script>
+      const cords = ["a", "c", "d", "e", "f"];
+      const note = document.getElementById("note");
+      cords.forEach((chord) => {
+        const button = document.createElement("button");
+        button.innerText = chord;
+        button.style.width = "100px";
+        button.style.height = "100px";
+        button.style.margin = "1rem";
+        button.style.fontSize = "1.5rem";
+        button.addEventListener("click", () => {
+          const sound = new Audio(`/assets/${chord}.wav`);
+          sound.play();
+        });
+        note.appendChild(button);
+      });
+    </script>
+  </body>
+</html>
